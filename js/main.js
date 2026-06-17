@@ -143,6 +143,24 @@ const PROJECTS = [
   }
 ];
 
+const hamburger = document.querySelector('.nav-hamburger');
+const navMenu = document.querySelector('nav ul');
+
+hamburger.addEventListener('click', () => {
+  const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
+  hamburger.setAttribute('aria-expanded', !isOpen);
+  hamburger.classList.toggle('active');
+  navMenu.classList.toggle('open');
+});
+
+navMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('open');
+  });
+});
+
 const filterBtns = document.querySelectorAll('.filter-btn');
 const allCards = () => [...document.querySelectorAll('#projects-grid .project-card')];
 

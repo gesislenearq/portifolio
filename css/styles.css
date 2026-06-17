@@ -167,7 +167,7 @@ section { padding: 6rem 4rem; }
 #projetos .section-title { color: var(--white); }
 .filter-bar { display: flex; gap: .6rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
 .filter-btn {
-  font-family: 'Jost', sans-serif; font-size: .7rem; font-weight: 400;
+  font-family: 'Montserrat', sans-serif; font-size: .7rem; font-weight: 400;
   letter-spacing: .16em; text-transform: uppercase;
   padding: .55rem 1.4rem; border: 1px solid rgba(200,168,130,.3);
   background: transparent; color: rgba(253,252,250,.45);
@@ -299,10 +299,46 @@ footer {
 }
 footer p { font-size: .7rem; letter-spacing: .12em; color: rgba(253,252,250,.2); }
 
+/* ── HAMBURGER ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: .4rem;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: var(--dark);
+  transition: transform .3s, opacity .3s;
+}
+.nav-hamburger.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-hamburger.active span:nth-child(2) { opacity: 0; }
+.nav-hamburger.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  nav { padding: 1.2rem 1.5rem; }
-  nav ul { display: none; }
+  nav { padding: 1.2rem 1.5rem; position: relative; }
+  nav ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(245,241,235,.98);
+    flex-direction: column;
+    gap: 0;
+    border-bottom: 1px solid var(--light);
+    backdrop-filter: blur(8px);
+  }
+  nav ul.open { display: flex; }
+  nav ul li a { display: block; padding: 1rem 1.5rem; border-bottom: 1px solid var(--light); }
+  .nav-hamburger { display: flex; }
   section { padding: 4rem 1.5rem; }
   #hero { padding: 0 1.5rem 4rem; }
   .sobre-layout { grid-template-columns: 1fr; gap: 2.5rem; }
